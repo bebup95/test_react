@@ -11,21 +11,31 @@ class MyComponent extends React.Component {
     //JSX
 
     handleMouse(event) {
-        console.log(event);
+        console.log(this.state.name);
         console.log(">> Clicked");
+        this.setState({
+            name: "Nhat Le",
+            age: Math.floor(Math.random() * 100) + 1,
+        });
     }
 
     Hovered(event) {
-        console.log(event.pageX);
-        console.log(">> Hovered");
+        // console.log(event.pageX);
+        // console.log(">> Hovered");
     }
 
     render() {
         return (
             <div>
-                My name is {this.state.name} and I'm from {this.state.address}
+                My name is {this.state.name} and I'm {this.state.age}
                 <div>
-                    <button onClick={this.handleMouse}>Click Me !</button>
+                    <button
+                        onClick={(event) => {
+                            this.handleMouse(event);
+                        }}
+                    >
+                        Click Me !
+                    </button>
                     <button onMouseOver={this.Hovered}>Hover Me !</button>
                 </div>
             </div>
