@@ -8,11 +8,10 @@ class MyComponent extends React.Component {
         address: "Dong Nai",
         age: 21,
     };
-    //JSX
 
     handleMouse(event) {
         console.log(this.state.name);
-        console.log(">> Clicked");
+        console.log(">> Clicked", event.target);
         this.setState({
             name: "Nhat Le",
             age: Math.floor(Math.random() * 100) + 1,
@@ -24,20 +23,34 @@ class MyComponent extends React.Component {
         // console.log(">> Hovered");
     }
 
+    handleOnChangeInput = (event) => {
+        this.setState({
+            name: event.target.value,
+        });
+    };
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state);
+    };
+
     render() {
         return (
             <div>
                 My name is {this.state.name} and I'm {this.state.age}
-                <div>
-                    <button
-                        onClick={(event) => {
-                            this.handleMouse(event);
+                <form
+                    onSubmit={(event) => {
+                        this.handleSubmit(event);
+                    }}
+                >
+                    <input
+                        type="text"
+                        onChange={(event) => {
+                            this.handleOnChangeInput(event);
                         }}
-                    >
-                        Click Me !
-                    </button>
-                    <button onMouseOver={this.Hovered}>Hover Me !</button>
-                </div>
+                    />
+                    <button>Submit!</button>
+                </form>
             </div>
         );
     }

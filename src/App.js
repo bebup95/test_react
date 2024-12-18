@@ -13,7 +13,6 @@ class App extends React.Component {
             <div>
                 Hello World Le Quang Minh Nhat
                 <MyComponent></MyComponent>
-                {Math.random()}
             </div>
         );
     }
