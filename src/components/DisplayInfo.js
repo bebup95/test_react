@@ -2,16 +2,27 @@ import React from "react";
 
 class DisplayInfo extends React.Component {
     render() {
-        console.log(this.props);
-        const { name, age } = this.props;
+        const { ListUsers } = this.props;
         return (
             <div>
-                My name's {name}
-                <br />
-                My age's {age}
+                {ListUsers.map((user) => {
+                    return (
+                        <div key={user.id}>
+                            <div> My name's {user.name}</div>
+                            <div> My age's {user.age}</div>
+                            <hr />
+                        </div>
+                    );
+                })}
             </div>
         );
     }
+
+    // <div>
+    //     My name's {name}
+    //     <br />
+    //     My age's {age}
+    // </div>
 }
 
 export default DisplayInfo;
