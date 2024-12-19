@@ -20,7 +20,9 @@ class DisplayInfo extends React.Component {
                         this.handleHideShow();
                     }}
                 >
-                    Click Me To Hide List Users Detail
+                    {this.state.isShowHide === true
+                        ? "Click Me To Hide List Users Detail"
+                        : "Click Me To Show List Users Detail"}
                 </button>
 
                 {this.state.isShowHide && (
