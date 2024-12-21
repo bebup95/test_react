@@ -14,8 +14,16 @@ class MyComponent extends React.Component {
     ],
   };
 
+  handleDeleteUser = (user) => {
+    let NewListUsers = [...this.state.ListUsers];
+    NewListUsers = NewListUsers.filter((item) => item.id !== user);
+    this.setState({
+      ListUsers: NewListUsers,
+    });
+  };
+
   handleAddUser = (user) => {
-    console.log(user);
+    // console.log(user);
     this.setState({
       ListUsers: [user, ...this.state.ListUsers],
     });
@@ -31,7 +39,10 @@ class MyComponent extends React.Component {
         <div className="a">
           <AddUserInfor handleAddUser={this.handleAddUser} />
           <br></br>
-          <DisplayInfo ListUsers={this.state.ListUsers} />
+          <DisplayInfo
+            ListUsers={this.state.ListUsers}
+            handleDeleteUser={this.handleDeleteUser}
+          />
         </div>
 
         <div className="b"></div>

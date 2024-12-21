@@ -17,7 +17,7 @@ class DisplayInfo extends React.Component {
     const { ListUsers } = this.props;
     return (
       <div className="display-infor-container">
-        <img src={logo} />
+        {/* <img src={logo} /> */}
         <button
           onClick={() => {
             this.handleHideShow();
@@ -38,6 +38,10 @@ class DisplayInfo extends React.Component {
                 >
                   <div> My name's {user.name}</div>
                   <div> My age's {user.age}</div>
+
+                  <button onClick={() => this.props.handleDeleteUser(user.id)}>
+                    Delete
+                  </button>
                   <hr />
                 </div>
               );

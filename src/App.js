@@ -6,7 +6,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-container">
-        {/* Hello World Le Quang Minh Nhat */}
+        Hello World Le Quang Minh Nhat
         <MyComponent></MyComponent>
       </div>
     );
