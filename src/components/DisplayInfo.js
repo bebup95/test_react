@@ -1,6 +1,6 @@
 import React from "react";
 import "./DisplayInfo.scss";
-import logo from "./../logo.svg";
+// import logo from "./../logo.svg";
 
 class DisplayInfo extends React.Component {
   state = {
