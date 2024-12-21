@@ -22,11 +22,19 @@ class MyComponent extends React.Component {
   };
 
   render() {
+    const test = "anh nhat ";
+
     return (
       <>
-        <AddUserInfor handleAddUser={this.handleAddUser} />
-        <br></br>
-        <DisplayInfo ListUsers={this.state.ListUsers} />
+        {test}
+        <br />
+        <div className="a">
+          <AddUserInfor handleAddUser={this.handleAddUser} />
+          <br></br>
+          <DisplayInfo ListUsers={this.state.ListUsers} />
+        </div>
+
+        <div className="b"></div>
       </>
     );
   }
