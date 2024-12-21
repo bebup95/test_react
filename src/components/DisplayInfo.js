@@ -29,7 +29,7 @@ class DisplayInfo extends React.Component {
         </button>
 
         {this.state.isShowHide && (
-          <div>
+          <>
             {ListUsers.map((user) => {
               return (
                 <div
@@ -42,7 +42,7 @@ class DisplayInfo extends React.Component {
                 </div>
               );
             })}
-          </div>
+          </>
         )}
       </div>
     );
