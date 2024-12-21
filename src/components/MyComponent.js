@@ -33,3 +33,7 @@ class MyComponent extends React.Component {
 }
 
 export default MyComponent;
+
+/**
+ * có thể dùng tailwind và styled-components để viết hẳn css vào file jsx
+ */
