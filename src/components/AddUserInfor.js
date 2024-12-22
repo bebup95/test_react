@@ -1,38 +1,30 @@
 import React, { useState } from "react";
 
 const AddUserInfor = (props) => {
-  const [UserInfor, setUserInfor] = useState({
-    name: "",
-    address: "Dong Nai",
-    age: "",
-  });
+  const [name, setName] = useState("");
+  // const [address, setaddress] = useState("Dong Nai");
+  const [age, setAge] = useState("");
 
   const handleOnChangeInput = (event) => {
-    setUserInfor({
-      ...UserInfor,
-      name: event.target.value,
-    });
+    setName(event.target.value);
   };
 
   const handleOnChangeAge = (event) => {
-    setUserInfor({
-      ...UserInfor,
-      age: event.target.value,
-    });
+    setAge(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     props.handleAddUser({
       id: Math.floor(Math.random() * 100) + 1 + "-random",
-      name: UserInfor.name,
-      age: UserInfor.age,
+      name: name,
+      age: age,
     });
   };
 
   return (
     <>
-      My name is {UserInfor.name} and I'm {UserInfor.age}
+      My name is {name} and I'm {age}
       <form
         onSubmit={(event) => {
           handleSubmit(event);
@@ -40,7 +32,7 @@ const AddUserInfor = (props) => {
       >
         <label>Your name: </label>
         <input
-          value={UserInfor.name}
+          value={name}
           type="text"
           onChange={(event) => {
             handleOnChangeInput(event);
@@ -49,7 +41,7 @@ const AddUserInfor = (props) => {
 
         <label>Your age: </label>
         <input
-          value={UserInfor.age}
+          value={age}
           type="text"
           onChange={(event) => {
             handleOnChangeAge(event);
