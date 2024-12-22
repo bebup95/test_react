@@ -3,9 +3,30 @@ import "./DisplayInfo.scss";
 // import logo from "./../logo.svg";
 
 class DisplayInfo extends React.Component {
-  state = {
-    isShowHide: true,
-  };
+  
+  constructor(props){
+    console.log('>>> start constructor !!!')
+    super(props)
+    this.state = {
+      isShowHide: true,
+    };
+  }
+
+  componentDidMount() {
+    console.log('>>> component did mount !!!')
+    setTimeout(() => {
+      document.title = 'Anh Nhat dep trai'
+    }, 3000)
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot){
+    console.log('>>> start did update !!!', this.props, prevProps)
+    if(this.props.ListUsers !== prevProps.ListUsers){
+      if (this.props.ListUsers.length === 5){
+        alert('u got 5 users')
+      }
+    }
+  }
 
   handleHideShow = () => {
     return this.setState({
@@ -14,6 +35,7 @@ class DisplayInfo extends React.Component {
   };
 
   render() {
+    console.log(">>> start render !!!")
     const { ListUsers } = this.props;
     return (
       <div className="display-infor-container">
