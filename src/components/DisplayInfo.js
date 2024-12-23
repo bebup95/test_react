@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DisplayInfo.scss";
 // import logo from "./../logo.svg";
 
@@ -12,6 +12,15 @@ const DisplayInfo = (props) => {
   const handleShowHideListUsers = () => {
     setShowHideListUsers(!isShowHideListUsers);
   };
+
+  console.log(">>> call me render");
+
+  useEffect(() => {
+    if (ListUsers.length === 0) {
+      alert("you deleted all list users");
+    }
+    console.log(">>> call me use effect");
+  }, [ListUsers]);
 
   return (
     <div className="display-infor-container">
