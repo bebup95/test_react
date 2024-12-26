@@ -1,6 +1,6 @@
 import SideBar from "./SideBar";
 import "./Admin.scss";
-import { FaHeart, FaBars } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { useState } from "react";
 
 const Admin = (props) => {
