@@ -13,7 +13,7 @@ const HomePage = () => {
           Collect all the data you need to understand customers with forms
           designed to be refreshingly different.
         </p>
-        <div class="link">
+        <div className="link">
           <a href="#!" class="btn">
             Get's started-it's free
           </a>
