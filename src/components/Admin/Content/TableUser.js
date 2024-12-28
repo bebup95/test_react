@@ -24,7 +24,14 @@ const TableUser = (props) => {
                   <td>{item.email}</td>
                   <td>{item.role}</td>
                   <td className="d-flex justify-content-around gap-2">
-                    <button className="btn btn-secondary">View</button>
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() => {
+                        props.handleClickBtnView(item);
+                      }}
+                    >
+                      View
+                    </button>
                     <button
                       className="btn btn-warning"
                       onClick={() => {
