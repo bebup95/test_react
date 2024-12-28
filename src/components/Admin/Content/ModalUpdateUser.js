@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
-import { postCreateNewUser } from "../../../services/apiServices";
+import { putUpdateUser } from "../../../services/apiServices";
 import { toast } from "react-toastify";
 import _ from "lodash";
 
@@ -17,6 +17,7 @@ const ModalUpdateUser = (props) => {
     setRole("USER");
     setImage("");
     setPreviewImage("");
+    props.resetData();
   };
   // const handleShow = () => {
   //   setShow(true);
@@ -30,7 +31,6 @@ const ModalUpdateUser = (props) => {
   const [previewImage, setPreviewImage] = useState("");
 
   useEffect(() => {
-    console.log("use effect ", dataUpdate);
     if (!_.isEmpty(dataUpdate)) {
       //update state
       setEmail(dataUpdate.email);
@@ -53,17 +53,7 @@ const ModalUpdateUser = (props) => {
   const handleSubmitCreateUser = async () => {
     // validate
 
-    if (!validateEmail(email)) {
-      toast.error("Invalid Email");
-      return;
-    }
-
-    if (!password) {
-      toast.error("Invalid Password");
-      return;
-    }
-
-    let data = await postCreateNewUser(email, password, username, role, image);
+    let data = await putUpdateUser(dataUpdate.id, username, role, image);
 
     if (data && data.EC === 0) {
       toast.success(data.EM);
@@ -75,16 +65,6 @@ const ModalUpdateUser = (props) => {
       toast.error(data.EM);
     }
   };
-
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
-
-  console.log("check render: dataUpdate", dataUpdate);
 
   return (
     <>
