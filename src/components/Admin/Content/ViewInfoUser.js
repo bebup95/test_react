@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import _ from "lodash";
 
 const ViewInfoUser = (props) => {
@@ -16,6 +16,7 @@ const ViewInfoUser = (props) => {
     setRole("USER");
     setImage("");
     setPreviewImage("");
+    props.resetDataDetail();
   };
   // const handleShow = () => {
   //   setShow(true);

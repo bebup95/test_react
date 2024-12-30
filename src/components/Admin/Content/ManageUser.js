@@ -37,6 +37,10 @@ const ManageUser = (props) => {
     setDataUpdate({});
   };
 
+  const resetDataDetail = () => {
+    setDetailUser({});
+  };
+
   const handleClickBtnView = (user) => {
     setShowHideModalView(true);
     setDetailUser(user);
@@ -73,6 +77,7 @@ const ManageUser = (props) => {
           show={showHideModalView}
           setShow={setShowHideModalView}
           detailUser={detailUser}
+          resetDataDetail={resetDataDetail}
         />
       </div>
     </div>
