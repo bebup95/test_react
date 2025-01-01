@@ -50,7 +50,7 @@ const ModalUpdateUser = (props) => {
     }
   };
 
-  const handleSubmitCreateUser = async () => {
+  const handleSubmitUpdateUser = async () => {
     // validate
 
     let data = await putUpdateUser(dataUpdate.id, username, role, image);
@@ -58,7 +58,9 @@ const ModalUpdateUser = (props) => {
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
-      await props.fetchListUsers();
+      // await props.fetchListUsers();
+      props.setCurrentPage(props.currentPage);
+      await props.fetchListUsersWithPaginate(props.currentPage);
     }
 
     if (data && data.EC !== 0) {
@@ -152,7 +154,7 @@ const ModalUpdateUser = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
+          <Button variant="primary" onClick={() => handleSubmitUpdateUser()}>
             Save
           </Button>
         </Modal.Footer>
