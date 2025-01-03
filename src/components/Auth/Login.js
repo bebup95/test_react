@@ -88,7 +88,13 @@ const Login = (props) => {
                 <div>
                   <p className="mb-0">
                     Don't have an account?{" "}
-                    <a href="#!" className="text-muted fw-bold">
+                    <a
+                      href="#!"
+                      className="text-muted fw-bold"
+                      onClick={() => {
+                        navigate("/register");
+                      }}
+                    >
                       Sign Up
                     </a>
                   </p>
