@@ -1,8 +1,38 @@
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { postRegister } from "../../services/apiServices";
+import { toast } from "react-toastify";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 const Register = (props) => {
   const navigate = useNavigate();
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowHidePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  const handleRegister = async () => {
+    const data = await postRegister(email, username, password);
+    console.log(">>>>>>>>. check submit: ", data);
+
+    if (data.EC === 0) {
+      toast.success(data.EM);
+      navigate("/");
+    }
+
+    if (data.EC !== 0) {
+      toast.error(data.EM);
+    }
+  };
 
   return (
     <section className="vh-100 gradient-custom">
@@ -23,10 +53,8 @@ const Register = (props) => {
                       <Form.Control
                         type="text"
                         placeholder="Enter your username"
-                        value={props.username}
-                        onChange={(event) =>
-                          props.setUsername(event.target.value)
-                        }
+                        value={username}
+                        onChange={(event) => setUsername(event.target.value)}
                         required
                       />
                     </Form.Group>
@@ -38,8 +66,8 @@ const Register = (props) => {
                       <Form.Control
                         type="email"
                         placeholder="Enter your email"
-                        value={props.email}
-                        onChange={(event) => props.setEmail(event.target.value)}
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
                         required
                       />
                     </Form.Group>
@@ -48,22 +76,33 @@ const Register = (props) => {
                   <div className="form-outline mb-4">
                     <Form.Group controlId="formPassword">
                       <Form.Label>Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        placeholder="Enter your password"
-                        value={props.password}
-                        onChange={(event) =>
-                          props.setPassword(event.target.value)
-                        }
-                        required
-                      />
+                      <div className="input-group">
+                        <Form.Control
+                          type={showPassword ? "text" : "password"}
+                          placeholder="Enter your password"
+                          value={password}
+                          onChange={(event) => setPassword(event.target.value)}
+                          required
+                        />
+                        <span
+                          className="input-group-text"
+                          onClick={() => {
+                            handleShowHidePassword();
+                          }}
+                          style={{ cursor: "pointer" }}
+                        >
+                          {showPassword ? <FaEye /> : <FaEyeSlash />}
+                        </span>
+                      </div>
                     </Form.Group>
                   </div>
 
                   <Button
                     className="btn btn-primary btn-lg px-5"
                     type="submit"
-                    onClick={() => {}}
+                    onClick={() => {
+                      handleRegister();
+                    }}
                   >
                     Sign Up
                   </Button>
@@ -72,26 +111,16 @@ const Register = (props) => {
                 <div>
                   <p className="mb-0">
                     Already have an account?{" "}
-                    <a
-                      href="#"
-                      className="text-muted fw-bold"
-                      onClick={() => {
-                        navigate("/login");
-                      }}
-                    >
+                    <Link to="/login" className="text-muted fw-bold">
                       Login
-                    </a>
+                    </Link>
                   </p>
                 </div>
 
                 <div className="mt-2 return-homepage">
-                  <span
-                    onClick={() => {
-                      navigate("/");
-                    }}
-                  >
+                  <Link to="/" className="text-muted">
                     &#60;&#60; Back To Homepage
-                  </span>
+                  </Link>
                 </div>
               </div>
             </div>

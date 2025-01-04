@@ -5,16 +5,16 @@ const HomePage = () => {
       <video autoPlay loop muted>
         <source src={videoHomepage} type="video/mp4" />
       </video>
-      <section class="title-container">
-        <h1 class="title line-clamp">
+      <section className="title-container">
+        <h1 className="title line-clamp">
           Get to know your customers with forms worth filling out
         </h1>
-        <p class="desc line-clamp">
+        <p className="desc line-clamp">
           Collect all the data you need to understand customers with forms
           designed to be refreshingly different.
         </p>
         <div className="link">
-          <a href="#!" class="btn">
+          <a href="#!" className="btn">
             Get's started-it's free
           </a>
         </div>
